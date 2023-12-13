@@ -1,0 +1,74 @@
+/* @link https://utopia.fyi/type/calculator?c=1920,18,1.2,1080,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+    --step--2: clamp(0.7813rem, 0.8241rem + -0.0357vw, 0.8rem);
+    --step--1: clamp(0.9375rem, 1.0804rem + -0.119vw, 1rem);
+    --step-0: clamp(1.125rem, 1.4107rem + -0.2381vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.8357rem + -0.4048vw, 1.5625rem);
+    --step-2: clamp(1.62rem, 2.3814rem + -0.6345vw, 1.9531rem);
+    --step-3: clamp(1.9438rem, 3.0809rem + -0.9476vw, 2.4413rem);
+    --step-4: clamp(2.3325rem, 3.9768rem + -1.3702vw, 3.0519rem);
+    --step-5: clamp(2.7994rem, 5.1208rem + -1.9345vw, 3.815rem);
+
+    --main-bg-color: #bcc8ec;
+  }
+
+@font-face {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Light.ttf");
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: bold;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: italic;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Italic.ttf");
+}
+
+body{
+    font-family: "Raleway", Tahoma;
+    background-color: var(--main-bg-color);
+}
+
+li {
+    display: inline;
+    font-size: 1.5em;
+}
+
+header{
+    text-align: center;
+}
+
+picture{
+    float: left;
+}
+
+footer{
+    text-align: center;
+}
+
+section > p{
+    font-size: .8em;
+}
+
+picture {
+    object-fit: scale-down;
+    object-position: left top;
+}
+
+.contact{
+    text-align: center;
+}
+
+.work{
+    display: block;
+}

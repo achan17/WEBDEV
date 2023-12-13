@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta property="og:title" content="Anthony Chan's Resume"/>
+    <meta property="og:type"  content="article"/>
+    <meta property="og:description" content="A resume website for potential hirers and family to explore"/>
+    <meta property="og:url" content="https://stupendous-truffle-41fb56.netlify.app/"/>
+    <meta property="og:image" content="https://stupendous-truffle-41fb56.netlify.app/images/me.webp"/> 
+    <style>
+        body {background-color: #E6E6FA;}
+    </style>
+    <title>Experiment</title>
+    <link href="images/favicon.ico" rel="icon">
+</head>
+
+<body>
+    <header>
+        <strong>Navigation</strong>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./links.html">Links</a></li>
+                <li><a href="./form-no-js.html">Form no javascript</a></li>
+                <li><a href="./form-js.html" >Form with javascript</a></li>
+                <li><a href="./web-component.html">Web Components</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Developing experiments</h1>
+        <p>This section will be where my current experiments with web developing
+        and software engineering to be displayed and explored by visitors as well.</p>
+        <h2>Web Developing Experiments</h2>
+
+        <h3>Cautionary Code</h3>
+        <canvas id="canvas">A teal rectangle.</canvas>
+        <div>Notice the difference in background color? While cool, it was
+        implemented in the HTML section which violates the <b>Separation of Concerns</b>
+        principle. Even this section which to the <i>untrained eye</i> seems 
+        fine has some practices which can be <span style="font-size: 28pt;">problematic</span>. Notice the bold and
+        italic words, while both styles were used elsewhere in this page, this
+        page I used physical tags rather than logical which was used in the other
+        pages. Along with those, there are the cautionary advices such as the div
+        and span HTML elements I used here which are not inherently bad until you
+        use too many of these elements to the point where the page becomes littered
+        with divs and spans. However, the biggest issue in this section is at 
+        problematic. In here not only did I use a span, but I also combined it with 
+        styling to change the font size which violates Separation of concerns. In short,
+        if you inspect this div element in your browser, there are numerous practices
+        that may be used by others but are advised against. 
+        </div>
+
+        <aside>
+            <p>If you would like to know more about web developing and the practices
+            mentioned such as Separation of Concerns, UCSD's CSE 134B class: Web 
+            Client Languages by Professor Powell is a great place to start.
+            </p>
+        </aside>
+
+        <h3>Coding in HTML???</h3>
+        <p>Throwing it back to when a young and innocent Anthony thought Java
+        was coffee and C# was just a music note. Here I am showing off the first
+        ever programming activity I did in Java while also showing off how HTML has 
+        support for code, just how far the support goes is unknown, but I can't
+        wait to test those limits. 
+        </p>
+        <pre><code>function helloWorld() 
+{
+    System.out.println("Hello World!");
+}</code></pre>
+
+        <h3>A webpage inside of a webpage</h3>
+        <iframe width="600" height="400" src="https://en.wikipedia.org/wiki/Persona_5" ></iframe>
+        <p>Wait a minute, you are trying to learn more about Anthony Chan, not 
+        this Persona thing so why is that here? Turns out, there is a 
+        feature where developers can display parts of another website on theirs
+        if they please, but this can be troublesome because if the webpage is 
+        changed or is deleted, then a 404 error could pop up and confuse some
+        users thinking something happened.</p>
+
+        <h3>Victory!?!?</h3>
+        <figure>
+            <figcaption>Take a look at this <strong>WARNING: AUDIO</strong></figcaption>
+            <audio controls src="videos/final-fantasy-vii-victory-fanfare-1.mp3"></audio>
+        </figure>
+        <p>Congratulations! You are victorious in your battle against the play
+        button and volume, play the glorious fanfare again to relive the feat.  
+        </p>
+
+        <h3>The only acceptable dad joke</h3>
+        <p>Honestly wanted to show both videos from HTML and this legendary
+        vine RIP. </p>
+        <video controls width="250">
+            <source src="videos/road.mp4" />
+        </video>
+        <p>My life after being exposed to this masterpiece</p>
+        <img src="images/stonks.png" alt="Meme picture about stocks joking 
+        about how the video enriched my life" />
+
+        <h3>Participation time</h3>
+        <p>I have been going on alot about myself and things relevant to me
+        so thank you for reading, now let's get some of your opinions.</p>
+        <form action="./experiment.html" method="get" class="feedback">
+            <label for="name">Enter your name or nickname: </label>
+            <input type="text" name="name" id="name" />
+            <label for="food-select">Choose a favorite food: </label>
+            <select id="food-select">
+                <optgroup label="Asian">
+                    <option>Ramen</option>
+                    <option>Pho</option>
+                    <option>Sinigang</option>
+                </optgroup>
+                <optgroup label="Europe">
+                    <option>Pizza</option>
+                    <option>Ratatouille</option>
+                    <option>Albondigas</option>
+                </optgroup>
+                <option>Other</option>
+            </select>
+            <label for="hobby-choice">Preferred Hobby: </label>
+            <input list="hobbies" id="hobby-choice" name="hobby-choice" />
+
+            <datalist id="hobbies">
+                <option value="Sports"></option>
+                <option value="Anime"></option>
+                <option value="Music"></option>
+                <option value="Weightlifting"></option>
+                <option value="Cooking/Baking"></option>
+                <option value="Other"></option>
+            </datalist>
+
+            <fieldset>
+                <legend>Choose your preferred flavor in a neopolitan ice cream</legend>
+
+                <input type="radio" id="vanilla" name="flavor" value="vanilla" />
+                <label for="vanilla">Vanilla</label><br/>
+
+                <input type="radio" id="chocolate" name="flavor" value="chocolate" />
+                <label for="chocolate">Chocolate</label><br/>
+
+                <input type="radio" id="strawberry" name="flavor" value="strawberry" />
+                <label for="strawberry">Strawberry</label><br/>
+            </fieldset>
+            <input type="submit" value="Submit" />
+        </form>
+
+        <h3>Journal time</h3>
+        <p>Ever wanted a chance to write your feelings down and for it to not 
+        be saved just so you can let your feelings out but have no trace of it,
+        well look no more, I can even provide some philosophical questions to
+        help get things going</p>
+        <ol>
+            <li>What would your younger self think of you now?</li>
+            <li>If you could spend a day with anyone, who would it be?</li>
+            <li>If you were told you have one day left to live, would you tell
+                anyone?</li>
+            <li>If you had the chance to live forever would you?</li>
+        </ol>
+        <label for="journal">Write whatever you want</label>
+        <textarea id="journal">The...</textarea>
+
+        <template id="future">
+            <table class="future_problem">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </template>
+
+        <h3>Art</h3>
+        <span> So one day I opened this circle
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="25" stroke="blue" />
+            </svg> 
+            oh look there it is.
+        </span>
+
+        <h3>Hooray</h3>
+        <p> Finally the last experiment, press this button to...</p>
+        <button>Press Me!</button>
+        <p>do absolutely nothing</p>
+
+        <h3>But wait there's more</h3>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+                <mi>E</mi>
+                <mo>=</mo>
+                <mrow>
+                    <mi>m</mi>
+                    <mo>&InvisibleTimes;</mo>
+                    <msup>
+                        <mi>c</mi>
+                        <mn>2</mn>
+                    </msup>
+                </mrow>
+            </mrow>
+        </math>
+        <p>Now that formula may just seem like a simple font adjustment, but
+        Einstein's famous formula was actually done using MathML which allow
+        html to write out math formulas and equations, even some of the most
+        complicated formulas could be written out with enough patience. Unbe-
+        knownst to many, MathML has been a part of the HTML specification for
+        a while but developers could not make use of it until recently and that
+        is because for about 80 different versions, google chrome did not 
+        support the features of MathML meaning for however long the versions
+        lasted, Chrome would not make its use available for the browser until
+        recently. A little birdie told me that it was not Chrome's development
+        team that implemented the MathML support but someone outside of the 
+        company who asked to push his implementation onto the main branch and
+        google accepted the push. 
+        </p>
+
+        <h2>Software Betas</h2>
+    </main>
+
+    <footer>
+        <hr/>
+        <p> This page was made by Anthony Chan with help from Professor Thomas 
+            Powell and the TA staff for Powell's CSE 134B class fall 2023 </p>
+    </footer>
+    <script src="scripts/experiment.js"></script>
+    <noscript class="error">Error: JavaScript is disabled or blocked.</noscript>
+</body>
+
+</html>

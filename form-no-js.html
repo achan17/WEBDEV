@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta property="og:title" content="Anthony Chan's Resume"/>
+    <meta property="og:type"  content="article"/>
+    <meta property="og:description" content="A resume website for potential hirers and family to explore"/>
+    <meta property="og:url" content="https://stupendous-truffle-41fb56.netlify.app/"/>
+    <meta property="og:image" content="https://stupendous-truffle-41fb56.netlify.app/images/me.webp"/> 
+    <title>Form No JS</title>
+    <link href="images/favicon.ico" rel="icon">
+    <link href="styles/form-no-js.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <strong>Navigation</strong>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./experiment.html">Experiment</a></li>
+                <li><a href="./links.html">Links</a></li>
+                <li><a href="./form-js.html" >Form with javascript</a></li>
+                <li><a href="./web-component.html">Web Components</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form action="https://httpbin.org/post" method="post" enctype="application/x-www-form-urlencoded">
+            <form-field class="name">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+                <output id="error_name"></output>
+                <output id="info_name"></output>
+            </form-field>
+            <form-field class="email">
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+                <output id="error_email"></output>
+                <output id="info_email"></output>
+            </form-field>
+            <form-field class="comments">
+                <label for="comments">Comments:</label>
+                <input 
+                    type="text" 
+                    name="comments" 
+                    minlength="8" 
+                    maxlength="280" 
+                    required
+                    pattern="[ A-Za-z0-9_,!-@#&%=;:'\?\s\$\(\)\^\*\+\[\]\{\}\| ]{8,280}"
+                    title="8 to 280 english characters, no emojis and should allow for most characters on a keyboard except for \">
+                <output id="error_comments"></output>
+                <output id="info_comments"></output>
+            </form-field>
+
+            <input type="hidden" name="possible_bot" value="true">
+
+            <br>
+
+            <form-field>
+                <button type="submit">Submit</button>
+            </form-field>
+        </form>
+    </main>
+
+    <footer>
+        <hr/>
+        <p> This page was made by Anthony Chan with help from Professor Thomas 
+            Powell and the TA staff for Powell's CSE 134B class fall 2023 </p>
+    </footer>
+
+</body>
+
+
+</html>

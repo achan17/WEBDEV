@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta property="og:title" content="Anthony Chan's Resume"/>
+    <meta property="og:type"  content="article"/>
+    <meta property="og:description" content="A resume website for potential hirers and family to explore"/>
+    <meta property="og:url" content="https://stupendous-truffle-41fb56.netlify.app/"/>
+    <meta property="og:image" content="https://stupendous-truffle-41fb56.netlify.app/images/me.webp"/> 
+    <title>Web Component</title>
+    <link href="images/favicon.ico" rel="icon">
+    <link href="styles/web-component.css" rel="stylesheet">
+    <script async src="scripts/web-component.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <strong>Navigation</strong>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About me</a></li>
+                <li><a href="./portfolio.html">Portfolio</a></li>
+                <li><a href="./experiment.html">Experiment</a></li>
+                <li><a href="./links.html">Links</a></li>
+                <li><a href="./form-no-js.html">Form no javascript</a></li>
+                <li><a href="./form-js.html" >Form with javascript</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <rating-widget>
+            <form id="rating" action="https://httpbin.org/post" method="POST">
+                    <p>How satisfied are you?</p>
+                    <input type="hidden" name="question" value="How satisfied are you?">
+                    <noscript><input type="hidden" name="sentBy" value="HTML"></noscript>
+                    <section>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="1 star" id="star1Label">1 &starf;</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="2 stars" id="star2Label">2 &starf;</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="3 stars" id="star3Label">3 &starf;</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="4 stars" id="star4Label">4 &starf;</label>
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label for="star5" title="5 stars" id="star5Label">5 &starf;</label>
+                    </section>
+                    <button type="submit">Submit</button>
+            </form>
+            <output></output>
+        </rating-widget>
+        <hr>
+
+        <current-weather>
+            
+            <br>
+        </current-weather>
+
+        <script>
+            class CurrentWeather extends HTMLElement {
+                constructor() {
+                    super();
+                    this.GET_WEATHER_URL = 'https://api.weather.gov/gridpoints/SGX/55,21/forecast';
+
+                    this.attachShadow({mode: 'open'});
+                    this.shadowRoot.innerHTML = `
+                        <style>
+                            section{
+                                background-color: var(--background-color, #A0A0A0);
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                                grid-column-gap: 5px;
+                                
+                            }
+                            p{
+                                display: inline;
+                                text-align: left;
+                                grid-column: 2;
+                                margin-top: auto;
+                                margin-bottom: auto;
+                                
+                            }
+                            img{
+                                display: none;
+                                margin-left: auto;
+                                margin-top: auto;
+                                margin-bottom: auto;
+                                grid-column: 1;
+
+                            }
+                            h2{
+                                background-color: var(--background-color, #A0A0A0);
+                                grid-column: 1 / 3;
+                            }
+                        </style>
+                        <section>    
+                            <h2>Weather Forecast</h2>
+                            <img id="pic" width="40" height="40" alt="Picture representing if it is Day or Night"/>
+                            <p id="forecast"></p>
+                            <img id="pic2" width="40" height="40" alt="Picture representing if it is Day or Night"/>
+                            <p id="forecast2"></p>
+                            <img id="pic3" width="40" height="40" alt="Picture representing if it is Day or Night"/>
+                            <p id="forecast3"></p>
+                            <img id="pic4" width="40" height="40" alt="Picture representing if it is Day or Night"/>
+                            <p id="forecast4"></p>
+                        </section>
+                    `;
+
+                    this.fetchCurrentWeather();
+                }
+
+                fetchCurrentWeather() {
+                    const weatherElement = this.shadowRoot.getElementById('forecast');
+                    const weatherImage = this.shadowRoot.getElementById('pic');
+                    const weatherElement2 = this.shadowRoot.getElementById('forecast2');
+                    const weatherImage2 = this.shadowRoot.getElementById('pic2');
+                    const weatherElement3 = this.shadowRoot.getElementById('forecast3');
+                    const weatherImage3 = this.shadowRoot.getElementById('pic3');
+                    const weatherElement4 = this.shadowRoot.getElementById('forecast4');
+                    const weatherImage4 = this.shadowRoot.getElementById('pic4');
+                    setTimeout(() => {
+                        fetch(this.GET_WEATHER_URL)
+                            .then(response => response.json())
+                            .then(data => {
+                                const weather = data.properties; 
+                                const fourteenForecast = weather.periods;
+                                const today = fourteenForecast[0];
+                                const nextDay = fourteenForecast[1];
+                                const thenDay = fourteenForecast[2];
+                                const afterDay = fourteenForecast[3];
+                                if(today.isDaytime){
+                                    weatherImage.src='images/day.png';
+                                    weatherImage.style.display='inline';
+                                    
+                                }
+                                else {
+                                    weatherImage.src='images/night.png';
+                                    weatherImage.style.display='flex';
+                                }
+                                const forecast = '' + today.name + ': ' + today.shortForecast + 
+                                ' ' + today.temperature + '\u00B0 ' + today.temperatureUnit +
+                                ' with a wind speed of ' + today.windSpeed + ' heading ' + today.windDirection +
+                                ' and a relative humidity of ' + today.relativeHumidity.value + '%';
+                                if(nextDay.isDaytime){
+                                    weatherImage2.src='images/day.png';
+                                    weatherImage2.style.display='inline';
+                                    
+                                }
+                                else {
+                                    weatherImage2.src='images/night.png';
+                                    weatherImage2.style.display='flex';
+                                }
+                                const forecast2 = '' + nextDay.name + ': ' + nextDay.shortForecast + 
+                                ' ' + nextDay.temperature + '\u00B0 ' + nextDay.temperatureUnit +
+                                ' with a wind speed of ' + nextDay.windSpeed + ' heading ' + nextDay.windDirection +
+                                ' and a relative humidity of ' + nextDay.relativeHumidity.value + '%';
+                                if(thenDay.isDaytime){
+                                    weatherImage3.src='images/day.png';
+                                    weatherImage3.style.display='inline';
+                                    
+                                }
+                                else {
+                                    weatherImage3.src='images/night.png';
+                                    weatherImage3.style.display='flex';
+                                }
+                                const forecast3 = '' + thenDay.name + ': ' + thenDay.shortForecast + 
+                                ' ' + thenDay.temperature + '\u00B0 ' + thenDay.temperatureUnit +
+                                ' with a wind speed of ' + thenDay.windSpeed + ' heading ' + thenDay.windDirection +
+                                ' and a relative humidity of ' + thenDay.relativeHumidity.value + '%';
+                                if(afterDay.isDaytime){
+                                    weatherImage4.src='images/day.png';
+                                    weatherImage4.style.display='inline';
+                                    
+                                }
+                                else {
+                                    weatherImage4.src='images/night.png';
+                                    weatherImage4.style.display='flex';
+                                }
+                                const forecast4 = '' + afterDay.name + ': ' + afterDay.shortForecast + 
+                                ' ' + afterDay.temperature + '\u00B0 ' + afterDay.temperatureUnit +
+                                ' with a wind speed of ' + afterDay.windSpeed + ' heading ' + afterDay.windDirection +
+                                ' and a relative humidity of ' + afterDay.relativeHumidity.value + '%';
+
+                                this.displayWeather(forecast, forecast2, forecast3, forecast4);
+                            })
+                            .catch(() => {
+                                this.displayWeather("Network connection failed to grab weather");
+                            })
+                    }, 1000);
+                }
+
+                displayWeather(weather, weather2, weather3, weather4) {
+                    const weatherElement = this.shadowRoot.getElementById('forecast');
+                    weatherElement.textContent = weather;
+                    const weatherElement2 = this.shadowRoot.getElementById('forecast2');
+                    weatherElement2.textContent = weather2;
+                    const weatherElement3 = this.shadowRoot.getElementById('forecast3');
+                    weatherElement3.textContent = weather3;
+                    const weatherElement4 = this.shadowRoot.getElementById('forecast4');
+                    weatherElement4.textContent = weather4;
+                }
+            }
+
+        customElements.define('current-weather', CurrentWeather);
+        </script>
+        <noscript>Current Weather Conditions Unavailable (Javascript is potentially off)</noscript>
+    </main>
+
+    <footer>
+        <hr/>
+        <p> This page was made by Anthony Chan with help from Professor Thomas 
+            Powell and the TA staff for Powell's CSE 134B class fall 2023 </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+:root {
+    --step--2: clamp(0.7813rem, 0.8241rem + -0.0357vw, 0.8rem);
+    --step--1: clamp(0.9375rem, 1.0804rem + -0.119vw, 1rem);
+    --step-0: clamp(1.125rem, 1.4107rem + -0.2381vw, 1.25rem);
+    --step-1: clamp(1.35rem, 1.8357rem + -0.4048vw, 1.5625rem);
+    --step-2: clamp(1.62rem, 2.3814rem + -0.6345vw, 1.9531rem);
+    --step-3: clamp(1.9438rem, 3.0809rem + -0.9476vw, 2.4413rem);
+    --step-4: clamp(2.3325rem, 3.9768rem + -1.3702vw, 3.0519rem);
+    --step-5: clamp(2.7994rem, 5.1208rem + -1.9345vw, 3.815rem);
+    --main-bg-color: #ACD68B;
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Light.ttf");
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: bold;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: italic;
+    font-weight: 400;
+    src: url("../fonts/Raleway/static/Raleway-Italic.ttf");
+}
+
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: "Raleway", Tahoma;
+}
+
+header {
+    text-align: center;
+}
+
+header:has(> h1) {
+    animation: bounce 2s ease;
+}
+
+@keyframes bounce{
+    0% {transform: translateY(0);}
+    20% {transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    50% {transform: translateY(0);}
+    60% {transform: translateY(-15px);}
+    80% {transform: translateY(0);}
+    100% {transform: translateY(0);}
+}
+
+main {
+    text-align: center;
+}
+
+li {
+    transition: 0.5s ease-out;
+    list-style-type: none;
+}
+
+li:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+}
