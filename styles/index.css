@@ -59,6 +59,11 @@ main {
     text-align: center;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 li {
     transition: 0.5s ease-out;
     list-style-type: none;
